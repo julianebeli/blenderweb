@@ -6,6 +6,7 @@ from flask import Flask, render_template
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'OurLittleSecret'
 
 
 app.register_blueprint(blueprint_requests.routes.mod, url_prefix='/blueprints')
