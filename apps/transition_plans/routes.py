@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, jsonify
 # from flask_wtf import FlaskForm
 # from wtforms import TextAreaField
 # from wtforms.validators import InputRequired, Optional
@@ -14,6 +14,7 @@ mod = Blueprint('transitions', __name__, template_folder="templates", )
 
 @mod.route('/', methods=['GET', 'POST'])
 def request_form():
+
     # form = RequestForm()
     # if form.validate_on_submit():
     #     print(form.data)
@@ -21,3 +22,10 @@ def request_form():
     #     return 'Form OK'
 
     return render_template('index_trans.html',)
+
+
+@mod.route('/course_id', methods=['GET', 'POST'])
+def check_input():
+    course_input = request.json
+    print("COURSE INPUT", course_input['course'])
+    return(jsonify({'answer': course_input['course']}))
