@@ -8,7 +8,7 @@ def is_course_id(u):
     print('coursing', u)
     print(course_id_stem.findall(u))
     if not u:
-        print(f'course is {u}')
+        print(f'no course {u}')
         return [u]
     else:
         course_id = course_id_stem.findall(u) + course_id_number.findall(u)
@@ -40,7 +40,18 @@ def use_blueprint():
 
 def associate_courses():
     print('Associating courses to blueprint')
-    error = True
+    targets = []
+    more = True
+    while more:
+        targets.extend(get_course('What is the id of the target course?'))
+        answer = input('Do you want to choose another target? [Y/N]')
+        if answer.lower() != 'y':
+            more = False
+    print(targets)
+    if targets:
+        error = False
+    else:
+        error = True
     return error
 
 

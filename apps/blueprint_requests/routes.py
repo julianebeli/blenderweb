@@ -4,7 +4,7 @@ from wtforms import TextAreaField
 from wtforms.validators import InputRequired, Optional
 from programs.course import get_course_id
 
-mod = Blueprint('blueprints', __name__, template_folder="templates")
+mod = Blueprint('blueprints', __name__, template_folder="templates", )
 
 
 class RequestForm(FlaskForm):

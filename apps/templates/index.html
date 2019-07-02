@@ -2,8 +2,16 @@
 <html lang="en">
     <title>BlenderWeb</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tachyons/css/tachyons.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
 <body>
-    <h1 class="f4 lh-copy sans-serif">You are on the app chooser index page</h1>
+    <h1>You are on the app index page</h1>
+    <div class="flex">
+        <div class="outline w-25 pa3 mr2 hover-bg-light-blue bg-animate"><a href="/blueprints" title="">Blueprint request form</a></div>
+        <div class="outline w-25 pa3 mr2 hover-bg-light-blue bg-animate"><a href="/outcomes" title="">Outcome Injector form</a></div>
+        <div class="outline w-25 pa3 mr2 hover-bg-light-blue bg-animate"><a href="/transitions" title="">Transition Plans form</a></div>
+    </div>
 </body>
 </html>
