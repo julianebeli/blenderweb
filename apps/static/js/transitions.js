@@ -1,7 +1,8 @@
 survey = document.getElementById("survey");
+survey_response = document.getElementById("survey_response")
 console.log("survey", survey)
 
-question = "<span>Which course <input id='question'/> <button onclick='send();'>OK</button></span>"
+question = "<span class='f4'>Which course <input id='question'/> <button onclick='send();'>OK</button></span>"
 
 
 function load_question(){
@@ -10,6 +11,18 @@ function load_question(){
 
 function get_tp_target() {
     console.log('Give me all your children ...')
+}
+
+function response_success(response){
+    console.log(response)
+    if (response.error == false){
+        msg = `<div class="f4">Found course: ${response.result.name} [${response.result.id}]</div>`
+    }
+    else {
+        msg = `<div class="f4">An error occurred: ${response.result[0]}</div>`
+    }
+    console.log('Success in response_success:', msg)
+    survey_response.innerHTML = msg
 }
 
 function send(){
@@ -22,8 +35,8 @@ function send(){
             'Content-Type': 'application/json'
         }
     }).then(res => res.json())
-.then(response => console.log('Success:', JSON.stringify(response)))
-.catch(error => console.error('Error:', error));
+.then(response => response_success(response))
+.catch(error => console.error('Application Error:', error));
 }
 
 

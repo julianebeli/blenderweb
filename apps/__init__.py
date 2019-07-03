@@ -1,4 +1,4 @@
-__all__ = ['blueprint_requests', 'outcome_injector']
+__all__ = ['blueprint_requests', 'outcome_injector', 'transition_plans']
 
 from apps.outcome_injector.routes import mod
 from apps.blueprint_requests.routes import mod
