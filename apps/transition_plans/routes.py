@@ -24,7 +24,7 @@ def request_form():
     return render_template('index_transition.html',)
 
 
-@mod.route('/course_id', methods=['GET', 'POST'])
+@mod.route('/check_course_id', methods=['GET', 'POST'])
 def check_input():
     course_input = request.json
     # print("COURSE INPUT", course_input['course'])

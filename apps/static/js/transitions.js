@@ -1,16 +1,14 @@
-survey = document.getElementById("survey");
-survey_response = document.getElementById("survey_response")
+
+const app_name = 'transitions'
+const survey = document.getElementById("survey");
+const survey_response = document.getElementById("survey_response")
 console.log("survey", survey)
 
 question = "<span class='f4'>Which course <input id='question'/> <button onclick='send();'>OK</button></span>"
 
 
-function load_question(){
+function start(){
     survey.innerHTML = question
-}
-
-function get_tp_target() {
-    console.log('Give me all your children ...')
 }
 
 function response_success(response){
@@ -25,10 +23,16 @@ function response_success(response){
     survey_response.innerHTML = msg
 }
 
-function send(){
+function response_error(error){
+    console.error('Application Error:', error)
+    msg = `<div class="f4"> A network error occurred, lost contact with server</div>`
+    survey_response.innerHTML = msg
+}
+
+function check_course_id(){
     course_text = document.getElementById('question').value
     console.log(course_text)
-    fetch('/transitions/course_id',{
+    fetch('/transitions/check_course_id',{
         method:'POST',
         body:JSON.stringify({course: course_text}),
         headers:{
@@ -36,7 +40,7 @@ function send(){
         }
     }).then(res => res.json())
 .then(response => response_success(response))
-.catch(error => console.error('Application Error:', error));
+.catch(error => response_error(error));
 }
 
 
